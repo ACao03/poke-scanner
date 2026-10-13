@@ -3,8 +3,28 @@ repos:
     rev: v8.18.2
     hooks:
       - id: gitleaks
+        exclude: |
+          (?x)^(
+            backend/\.venv/.*|
+            frontend/node_modules/.*|
+            frontend/\.next/.*|
+            \.git/.*
+          )$
+
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
     hooks:
       - id: detect-private-key
+        exclude: ^backend/\.venv/
       - id: check-added-large-files
+        args: ["--maxkb=2000"]
+        exclude: |
+          (?x)^(
+            backend/\.venv/.*|
+            frontend/node_modules/.*|
+            frontend/\.next/.*
+          )$
+      - id: end-of-file-fixer
+        exclude: ^backend/\.venv/
+      - id: trailing-whitespace
+        exclude: ^backend/\.venv/

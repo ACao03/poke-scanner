@@ -1,7 +1,29 @@
+# Python
+.venv/
+backend/.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Node
+node_modules/
+frontend/node_modules/
+.next/
+frontend/.next/
+
+# OS
+.DS_Store
+**/.DS_Store
+
+# Env files
 .env
 .env.*
 !.env.example
-*.pem
-*.key
-.venv.DS_Store
-**/.DS_Store
+backend/.env
+
+# Build / cache
+.cache/
+backend/.cache/
+dist/
+build/

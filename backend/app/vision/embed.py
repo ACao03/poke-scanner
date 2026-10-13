@@ -15,7 +15,7 @@ _STD = torch.tensor([0.229, 0.224, 0.225]).view(1, 3, 1, 1)
 
 def _prep(pil: Image.Image, size: int = 224) -> torch.Tensor:
 	img = pil.convert("RGB").resize((size, size))
-	x = torch.from_numpy(np.asarray(img)).float() / 255.0
+	x = torch.from_numpy(np.array(img, copy=True)).float() / 255.0
 	x = x.permute(2, 0, 1).unsqueeze(0)
 	return (x - _MEAN) / _STD
 
